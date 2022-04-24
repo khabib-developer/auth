@@ -1,0 +1,31 @@
+import { Dispatch } from "redux";
+import { setError } from "../app/action";
+import { FormActionTypes } from "./types";
+
+export const setEmail = (payload: string) => {
+    return {
+        type: FormActionTypes.FORM_EMAIL,
+        payload
+    }
+}
+
+
+export const setPassword = (payload: string) => {
+    return {
+        type: FormActionTypes.FORM_PASSWORD,
+        payload
+    }
+}
+
+export const setFormError = (payload: any, msg: string | null = null) => {
+    return (dispatch: Dispatch) => {
+        dispatch({
+            type: FormActionTypes.FORM_ERROR,
+            payload
+        })
+        if(msg)
+            dispatch(setError(msg))
+    }
+}
+
+
